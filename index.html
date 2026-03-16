@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Steffen Rauff — UX Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -18,7 +19,7 @@
     }
 
     body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -32,33 +33,51 @@
     nav {
       position: sticky;
       top: 0;
-      background: rgba(249, 248, 246, 0.92);
+      background: rgba(249, 248, 246, 0.95);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
       z-index: 100;
-      padding: 0 2rem;
+      padding: 0 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    nav ul {
+    .nav-logo {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-links {
       list-style: none;
       display: flex;
-      gap: 2rem;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 1rem 0;
+      gap: 2.5rem;
+      padding: 1.1rem 0;
     }
     nav a {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       font-weight: 500;
+      letter-spacing: 0.04em;
       transition: color 0.15s;
     }
     nav a:hover { color: var(--text); text-decoration: none; }
+    .nav-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%);
+      border: 2px solid var(--border);
+    }
 
     /* LAYOUT */
     .container {
-      max-width: 800px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 6rem;
     }
 
     section {
@@ -72,80 +91,96 @@
       padding: 7rem 0 5rem;
     }
     .eyebrow {
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--muted);
       margin-bottom: 1rem;
     }
-    h1 {
-      font-size: clamp(2.4rem, 5vw, 3.6rem);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+    .hero-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
       margin-bottom: 1.5rem;
     }
+    h1 {
+      font-family: 'Cormorant Garant', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 4rem);
+      font-weight: 600;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 2rem;
+      max-width: 900px;
+    }
     .hero-sub {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       color: var(--muted);
-      max-width: 560px;
+      max-width: 520px;
       margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 100%;
+      margin-bottom: 1.2rem;
     }
     .hero-cta {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: var(--accent);
+      background: var(--text);
       color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
+      padding: 0.85rem 2rem;
+      border-radius: 100px;
       font-weight: 500;
       font-size: 0.95rem;
       transition: opacity 0.15s;
     }
-    .hero-cta:hover { opacity: 0.88; text-decoration: none; }
+    .hero-cta:hover { opacity: 0.8; text-decoration: none; }
 
     /* HERO LAYOUT */
     .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 4rem;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      text-align: center;
+      gap: 1.5rem;
     }
     .hero-image-wrap {
-      position: relative;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border);
     }
     .hero-image-wrap img {
       width: 100%;
-      aspect-ratio: 3 / 4;
+      height: 100%;
       object-fit: cover;
-      border-radius: 20px;
       display: block;
+      filter: grayscale(100%);
     }
-    .hero-image-placeholder {
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      border-radius: 20px;
-      background: var(--border);
-      display: flex;
+    .hero-linkedin {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.85rem;
-      color: var(--muted);
-      font-family: 'Helvetica Neue', sans-serif;
-      text-align: center;
-      padding: 1rem;
+      width: 40px;
+      height: 40px;
+      background: #2d6a4f;
+      border-radius: 50%;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 0.5rem;
+      transition: opacity 0.15s;
     }
-    @media (max-width: 680px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-      .hero-image-wrap {
-        max-width: 260px;
-        margin: 0 auto;
-      }
-    }
+    .hero-linkedin:hover { opacity: 0.8; text-decoration: none; }
 
     /* SECTION HEADINGS */
     h2 {
@@ -288,29 +323,24 @@
 <body>
 
 <nav>
-  <ul>
-    <li><a href="#om">Om mig</a></li>
-    <li><a href="#kompetencer">Kompetencer</a></li>
+  <a class="nav-logo" href="#">Steffen Rauff</a>
+  <ul class="nav-links">
     <li><a href="#projekter">Projekter</a></li>
+    <li><a href="#kompetencer">Metoder</a></li>
+    <li><a href="#om">Om mig</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
+  <img class="nav-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&fit=crop" alt="Steffen Rauff">
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="container">
     <div class="hero-inner">
-      <div class="hero-text">
-        <p class="eyebrow">Senior UX Researcher</p>
-        <h1>Steffen Rauff</h1>
-        <p class="hero-sub">Hej, jeg er senior UX-designer med passion for at skabe stærke forbindelser mellem fantastiske brugeroplevelser og kommercielle resultater. Mit arbejde bygger bl.a. på dyb kvalitativ indsigt, strukturerede ResearchOps‑praksisser og en outcome‑fokuseret tilgang, hvor hurtige feedback loops og kontinuerlig discovery er centrale drivkræfter.</p>
-        <p class="hero-sub" style="margin-top: -1rem;">Jeg har flere års erfaring med at modne UX‑research i organisationer — fra research maturity assessments til opbygning af skalerbare processer og infrastruktur, der gør brugerinddragelse både lettere og mere effektfuld.</p>
-        <a class="hero-cta" href="#projekter">Projekter →</a>
-      </div>
-      <div class="hero-image-wrap">
-        <!-- Erstat src med stien til dit billede, fx src="billede.jpg" -->
-        <div class="hero-image-placeholder">Upload dit billede og erstat denne div med:<br><br>&lt;img src="dit-billede.jpg" alt="Steffen Rauff"&gt;</div>
-      </div>
+      <p class="hero-label">Steffen Rauff — Senior UX Researcher</p>
+      <h1>Jeg oversætter brugeradfærd til produktbeslutninger der rykker.</h1>
+      <p class="hero-sub">UX-designer og researcher med fokus på kvalitativ indsigt, ResearchOps og outcome-drevet produktudvikling.</p>
+      <a class="hero-cta" href="#projekter">Se projekter →</a>
     </div>
   </div>
 </section>
@@ -322,9 +352,8 @@
     <p class="section-intro">Researcher med fokus på at gøre kompleks brugeradfærd forståelig og handlingsbar.</p>
     <div class="about-grid">
       <div class="about-text">
-        <p>Jeg arbejder som embedded user researcher på tværs af produktteams i streamingindustrien, og driver derudover centraliseret, tværgående research på organisationsniveau.</p>
-        <p>Mit udgangspunkt er altid at bygge bro: mellem data og beslutning, mellem brugeroplevelse og forretningsbehov, og mellem teamsilo'er der ikke taler nok sammen.</p>
-        <p>Jeg trives bedst i miljøer med høj kompleksitet og mange interessenter — og med at skære igennem støjen og finde frem til det der faktisk betyder noget.</p>
+        <p>Hej, jeg er senior UX-designer med passion for at skabe stærke forbindelser mellem fantastiske brugeroplevelser og kommercielle resultater. Mit arbejde bygger bl.a. på dyb kvalitativ indsigt, strukturerede ResearchOps‑praksisser og en outcome‑fokuseret tilgang, hvor hurtige feedback loops og kontinuerlig discovery er centrale drivkræfter.</p>
+        <p>Jeg har flere års erfaring med at modne UX‑research i organisationer — fra research maturity assessments til opbygning af skalerbare processer og infrastruktur, der gør brugerinddragelse både lettere og mere effektfuld.</p>
       </div>
       <div class="about-facts">
         <div class="fact">
