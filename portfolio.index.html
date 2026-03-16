@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steffen Rauff — UX Researcher</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f9f8f6;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --accent: #2d5be3;
+      --accent-light: #eef1fd;
+      --border: #e4e2de;
+      --card: #ffffff;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(249, 248, 246, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 0 2rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 0;
+    }
+    nav a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    nav a:hover { color: var(--text); text-decoration: none; }
+
+    /* LAYOUT */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    /* HERO */
+    #hero {
+      padding: 7rem 0 5rem;
+    }
+    .eyebrow {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: opacity 0.15s;
+    }
+    .hero-cta:hover { opacity: 0.88; text-decoration: none; }
+
+    /* SECTION HEADINGS */
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .section-intro {
+      color: var(--muted);
+      margin-bottom: 3rem;
+      font-size: 1.05rem;
+    }
+
+    /* OM MIG */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-text p { color: #444; margin-bottom: 1rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-facts {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+    .fact { margin-bottom: 1.2rem; }
+    .fact:last-child { margin-bottom: 0; }
+    .fact-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+    .fact-value { font-size: 0.95rem; color: var(--text); }
+
+    /* KOMPETENCER */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .skill-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(45, 91, 227, 0.08);
+    }
+    .skill-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+    .skill-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .skill-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+    /* PROJEKTER */
+    .projects-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.75rem;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(45, 91, 227, 0.08);
+    }
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .project-title { font-weight: 700; font-size: 1.05rem; }
+    .project-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .project-desc { color: #555; font-size: 0.95rem; line-height: 1.6; }
+    .project-methods {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .method-pill {
+      font-size: 0.78rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.2rem 0.65rem;
+      color: var(--muted);
+    }
+
+    /* KONTAKT */
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      max-width: 500px;
+    }
+    .contact-card p { color: var(--muted); margin-bottom: 2rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.85rem; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .contact-link:hover { color: var(--accent); text-decoration: none; }
+    .contact-link span:first-child { font-size: 1.1rem; }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#om">Om mig</a></li>
+    <li><a href="#kompetencer">Kompetencer</a></li>
+    <li><a href="#projekter">Projekter</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <p class="eyebrow">UX Researcher</p>
+    <h1>Steffen Rauff</h1>
+    <p class="hero-sub">Jeg hjælper produktteams med at forstå brugerne bag tallene — og omsætte den indsigt til beslutninger der rykker.</p>
+    <a class="hero-cta" href="#kontakt">Tag kontakt →</a>
+  </div>
+</section>
+
+<!-- OM MIG -->
+<section id="om">
+  <div class="container">
+    <h2>Om mig</h2>
+    <p class="section-intro">Researcher med fokus på at gøre kompleks brugeradfærd forståelig og handlingsbar.</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Jeg arbejder som embedded user researcher på tværs af produktteams i streamingindustrien, og driver derudover centraliseret, tværgående research på organisationsniveau.</p>
+        <p>Mit udgangspunkt er altid at bygge bro: mellem data og beslutning, mellem brugeroplevelse og forretningsbehov, og mellem teamsilo'er der ikke taler nok sammen.</p>
+        <p>Jeg trives bedst i miljøer med høj kompleksitet og mange interessenter — og med at skære igennem støjen og finde frem til det der faktisk betyder noget.</p>
+      </div>
+      <div class="about-facts">
+        <div class="fact">
+          <div class="fact-label">Nuværende rolle</div>
+          <div class="fact-value">Embedded UX Researcher, 5 produktteams</div>
+        </div>
+        <div class="fact">
+          <div class="fact-label">Branche</div>
+          <div class="fact-value">Streaming &amp; digitale medier</div>
+        </div>
+        <div class="fact">
+          <div class="fact-label">Fokusområder</div>
+          <div class="fact-value">Kvalitativ research, ResearchOps, stakeholder-kommunikation</div>
+        </div>
+        <div class="fact">
+          <div class="fact-label">Lokation</div>
+          <div class="fact-value">Danmark</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KOMPETENCER -->
+<section id="kompetencer">
+  <div class="container">
+    <h2>Kompetencer</h2>
+    <p class="section-intro">Hvad jeg bringer til bordet.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🔍</div>
+        <div class="skill-title">Kvalitativ research</div>
+        <div class="skill-desc">Interviews, fokusgrupper, observationsstudier og kontekstuelle interviews.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🧪</div>
+        <div class="skill-title">Brugertest</div>
+        <div class="skill-desc">Modereret og umodereret test, tænke-højt-protokol, remote og in-person.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-title">Mixed methods</div>
+        <div class="skill-desc">Integration af kvantitative data med kvalitative indsigter for et komplet billede.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗺️</div>
+        <div class="skill-title">Strategisk prioritering</div>
+        <div class="skill-desc">Research roadmaps, prioritering på tværs af teams og stakeholder-alignment.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-title">ResearchOps</div>
+        <div class="skill-desc">Brugerpaneler, rekrutteringsprocesser, tooling og videndeling på tværs af organisationen.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💬</div>
+        <div class="skill-title">Kommunikation</div>
+        <div class="skill-desc">Research der lander hos produktteams — ikke bare dokumenter der samler støv.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJEKTER -->
+<section id="projekter">
+  <div class="container">
+    <h2>Projekter</h2>
+    <p class="section-intro">Et udvalg af research jeg har drevet eller bidraget til.</p>
+    <div class="projects-list">
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Hvad forhindrer brugere i at genvinde adgang til deres konto?</div>
+          <span class="project-tag">Discovery · Streaming</span>
+        </div>
+        <p class="project-desc">17% af brugere gennemførte ikke forgot password-flowet. Jeg kortlagde antagelser på tværs af flowet, prioriterede dem efter vigtighed og evidens, og designede eksperimenter — kvalitative og kvantitative — der kunne afdække de reelle blockers og pege på konkrete løsningsretninger.</p>
+        <div class="project-methods">
+          <span class="method-pill">Assumption mapping</span>
+          <span class="method-pill">Usability test</span>
+          <span class="method-pill">Session recordings</span>
+          <span class="method-pill">Backend-analyse</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Hvad betyder AI-genereret livetekstning for døve og hørehæmmede brugere?</div>
+          <span class="project-tag">Brugerviden · Tilgængelighed</span>
+        </div>
+        <p class="project-desc">Gennem interviews med 9 delvist eller helt døve respondenter og brugertests af to tekst-formater — ord-for-ord og blok-opdelt — afdækkede jeg hvad der reelt har betydning for denne brugergruppe. Den vigtigste indsigt: adgang til mere indhold vejer tungest. Valget af format er sekundært.</p>
+        <div class="project-methods">
+          <span class="method-pill">Kvalitative interviews</span>
+          <span class="method-pill">Brugertest</span>
+          <span class="method-pill">Tænke-højt-protokol</span>
+          <span class="method-pill">Komparativ analyse</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="container">
+    <h2>Kontakt</h2>
+    <div class="contact-card">
+      <p>Åben for nye muligheder. Skriv en mail eller find mig på LinkedIn.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:steffenrauff@gmail.com">
+          <span>✉️</span>
+          <span>steffenrauff@gmail.com</span>
+        </a>
+        <a class="contact-link" href="https://linkedin.com/in/[din-profil]" target="_blank">
+          <span>🔗</span>
+          <span>LinkedIn — [opdater med din profil-URL]</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Steffen Rauff · UX Researcher · Danmark</p>
+</footer>
+
+</body>
+</html>
