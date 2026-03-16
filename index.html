@@ -106,6 +106,47 @@
     }
     .hero-cta:hover { opacity: 0.88; text-decoration: none; }
 
+    /* HERO LAYOUT */
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-image-wrap {
+      position: relative;
+    }
+    .hero-image-wrap img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 20px;
+      display: block;
+    }
+    .hero-image-placeholder {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 20px;
+      background: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-family: 'Helvetica Neue', sans-serif;
+      text-align: center;
+      padding: 1rem;
+    }
+    @media (max-width: 680px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .hero-image-wrap {
+        max-width: 260px;
+        margin: 0 auto;
+      }
+    }
+
     /* SECTION HEADINGS */
     h2 {
       font-size: 1.6rem;
@@ -258,10 +299,19 @@
 <!-- HERO -->
 <section id="hero">
   <div class="container">
-    <p class="eyebrow">UX Researcher</p>
-    <h1>Steffen Rauff</h1>
-    <p class="hero-sub">Hej, jeg er senior UX-designer med passion for at skabe stærke forbindelser mellem fantastiske brugeroplevelser og kommercielle resultater. Mit arbejde bygger bl.a. på dyb kvalitativ indsigt, strukturerede ResearchOps‑praksisser og en outcome‑fokuseret tilgang, hvor hurtige feedback loops og kontinuerlig discovery er centrale drivkræfter. Jeg har flere års erfaring med at modne UX‑research i organisationer — fra research maturity assessments til opbygning af skalerbare processer og infrastruktur, der gør brugerinddragelse både lettere og mere effektfuld.</p>
-    <a class="hero-cta" href="#kontakt">Tag kontakt →</a>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow">Senior UX Researcher</p>
+        <h1>Steffen Rauff</h1>
+        <p class="hero-sub">Hej, jeg er senior UX-designer med passion for at skabe stærke forbindelser mellem fantastiske brugeroplevelser og kommercielle resultater. Mit arbejde bygger bl.a. på dyb kvalitativ indsigt, strukturerede ResearchOps‑praksisser og en outcome‑fokuseret tilgang, hvor hurtige feedback loops og kontinuerlig discovery er centrale drivkræfter.</p>
+        <p class="hero-sub" style="margin-top: -1rem;">Jeg har flere års erfaring med at modne UX‑research i organisationer — fra research maturity assessments til opbygning af skalerbare processer og infrastruktur, der gør brugerinddragelse både lettere og mere effektfuld.</p>
+        <a class="hero-cta" href="#projekter">Projekter →</a>
+      </div>
+      <div class="hero-image-wrap">
+        <!-- Erstat src med stien til dit billede, fx src="billede.jpg" -->
+        <div class="hero-image-placeholder">Upload dit billede og erstat denne div med:<br><br>&lt;img src="dit-billede.jpg" alt="Steffen Rauff"&gt;</div>
+      </div>
+    </div>
   </div>
 </section>
 
