@@ -98,17 +98,31 @@
       color: var(--muted);
       margin-bottom: 1rem;
     }
+    .hero-identity {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      border: 2px solid var(--border);
+    }
     .hero-label {
       font-size: 0.78rem;
       font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 1.5rem;
+      margin-bottom: 0;
     }
     h1 {
       font-family: 'Cormorant Garant', Georgia, serif;
-      font-size: clamp(2rem, 4vw, 4rem);
+      font-size: clamp(1.4rem, 2.5vw, 2.4rem);
       font-weight: 600;
       line-height: 1.0;
       letter-spacing: -0.02em;
@@ -330,16 +344,18 @@
     <li><a href="#om">Om mig</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
-  <img class="nav-avatar" src="steffen.jpg" alt="Steffen Rauff">
+  <img class="nav-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&fit=crop" alt="Steffen Rauff">
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="container">
     <div class="hero-inner">
-      <p class="hero-label">Steffen Rauff — Senior UX Researcher</p>
-      <h1>Jeg oversætter brugeradfærd til produktbeslutninger der rykker.</h1>
-      <p class="hero-sub">UX-designer og researcher med fokus på kvalitativ indsigt, ResearchOps og outcome-drevet produktudvikling.</p>
+      <div class="hero-identity">
+        <img class="hero-avatar" src="steffen.jpg" alt="Steffen Rauff">
+        <p class="hero-label">Steffen Rauff — Senior UX Researcher</p>
+      </div>
+      <h1>Jeg bygger bro mellem dyb brugerforståelse og de produktbeslutninger der skaber værdi — for brugere og forretning.</h1>
       <a class="hero-cta" href="#projekter">Se projekter →</a>
     </div>
   </div>
